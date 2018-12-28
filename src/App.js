@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Board from "./Board";
 
@@ -9,19 +8,13 @@ class App extends Component {
   };
 
   createCard = newCard => {
+    console.log(newCard);
+    console.log(this.state.cards);
     this.setState(prevState => {
       let cardsNow = [...prevState.cards, newCard];
       return {
         cards: cardsNow
       };
-    });
-  };
-
-  filterCards = (cards, boardNumber) => {
-    return cards.filter(card => {
-      if (card.board === boardNumber) {
-        return true;
-      }
     });
   };
 
@@ -47,7 +40,7 @@ class App extends Component {
       <div className="board-container">
         <Board
           boardNumber={1}
-          cards={this.filterCards(this.state.cards, 1)}
+          cards={this.state.cards}
           boardName="First board"
           createCard={this.createCard}
           moveCard={this.moveCard}
@@ -55,21 +48,21 @@ class App extends Component {
         />
         <Board
           boardNumber={2}
-          cards={this.filterCards(this.state.cards, 2)}
+          cards={this.state.cards}
           boardName="Second board"
           createCard={this.createCard}
           moveCard={this.moveCard}
         />
         <Board
           boardNumber={3}
-          cards={this.filterCards(this.state.cards, 3)}
+          cards={this.state.cards}
           boardName="Third"
           createCard={this.createCard}
           moveCard={this.moveCard}
         />
         <Board
           boardNumber={4}
-          cards={this.filterCards(this.state.cards, 4)}
+          cards={this.state.cards}
           boardName="Fourth"
           createCard={this.createCard}
           moveCard={this.moveCard}
